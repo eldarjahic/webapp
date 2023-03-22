@@ -1,6 +1,6 @@
 <?php
 require_once ("rest/dao/usersDao.class.php");
-$users_dao = new usersDao();
+$users_dao = new UsersDao();
 $results = $users_dao->get_all();
 print_r($results);
 /*

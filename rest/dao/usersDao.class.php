@@ -1,5 +1,5 @@
 <?php
-class usersDao{
+class UsersDao{
     private $conn;
 
     public function __construct(){
