@@ -21,8 +21,8 @@ class usersDao{
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
     public function add($first_name, $last_name, $country){
-        $stm = $this->conn->prepare("INSERT INTO users(first_name, last_name, country) VALUES ('$first_name', '$last_name', '$country')");
-        $result=$stm->execute();
+        $stm = $this->conn->prepare("INSERT INTO users(first_name, last_name, country) VALUES (:first_name, :last_name, :country)");
+        $result=$stm->execute(['first_name'=>$first_name, 'last_name'=>$last_name, 'country'=>$country]);
     }
     public function update($first_name, $last_name, $country, $id){
         $stm = $this->conn->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, country = :country WHERE id =:id");
@@ -30,8 +30,8 @@ class usersDao{
     }
 
     public function delete($id){
-        $stm = $this->conn->prepare("DELETE FROM users WHERE id =$id");
-        $result=$stm->execute();
+        $stm = $this->conn->prepare("DELETE FROM users WHERE id =:id");
+        $result=$stm->execute(['id'=>$id]);
     }
     
 }
