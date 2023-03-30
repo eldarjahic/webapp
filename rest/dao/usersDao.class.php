@@ -20,6 +20,12 @@ class UsersDao{
         $stm->execute();
         return $stm->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function get_by_id($id){
+        $stm = $this->conn->prepare("SELECT * FROM users WHERE id=:id");
+        $stm->execute(['id' => $id]);
+        return $stm->fetch();
+    }
     public function add($first_name, $last_name, $country){
         $stm = $this->conn->prepare("INSERT INTO users(first_name, last_name, country) VALUES (:first_name, :last_name, :country)");
         $result=$stm->execute(['first_name'=>$first_name, 'last_name'=>$last_name, 'country'=>$country]);
