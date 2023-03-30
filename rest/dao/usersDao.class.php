@@ -24,15 +24,19 @@ class UsersDao{
     public function get_by_id($id){
         $stm = $this->conn->prepare("SELECT * FROM users WHERE id=:id");
         $stm->execute(['id' => $id]);
-        return $stm->fetch();
+        return $stm->fetchALL();
     }
-    public function add($first_name, $last_name, $country){
+    public function add($user){
         $stm = $this->conn->prepare("INSERT INTO users(first_name, last_name, country) VALUES (:first_name, :last_name, :country)");
-        $result=$stm->execute(['first_name'=>$first_name, 'last_name'=>$last_name, 'country'=>$country]);
+        $stm->execute($user);
+        $user ['id'] = $this->conn->lastInsertId();
+        return $user;
     }
-    public function update($first_name, $last_name, $country, $id){
+    public function update($user, $id){
+        $user['id'] = $id;
         $stm = $this->conn->prepare("UPDATE users SET first_name = :first_name, last_name = :last_name, country = :country WHERE id =:id");
-        $result=$stm->execute(['first_name'=>$first_name, 'last_name'=>$last_name, 'country'=>$country, 'id'=>$id]);
+        $stm->execute($user);
+        return $user;
     }
 
     public function delete($id){
