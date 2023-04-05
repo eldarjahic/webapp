@@ -1,1 +1,2 @@
-vendor/
+vendor/ 
+rest/Config.class.php
