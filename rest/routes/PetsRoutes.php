@@ -1,40 +1,40 @@
 <?php
- Flight::route("GET /users", function(){
+ Flight::route("GET /pets", function(){
    
-    Flight::json(Flight::users_dao()->get_all());
+    Flight::json(Flight::pet_service()->get_all());
  });
- Flight::route("GET /users_by_id", function(){
+ Flight::route("GET /pet_by_id", function(){
     
-    Flight::json(Flight::users_dao()->get_by_id($id = Flight::request()->query['id']));
+    Flight::json(Flight::pet_service()->get_by_id($id = Flight::request()->query['id']));
  });
- Flight::route("GET /users/@id", function($id){
+ Flight::route("GET /pet/@id", function($id){
   
-    Flight::json(Flight::users_dao()->get_by_id($id));
+    Flight::json(Flight::pet_service()->get_by_id($id));
  });
- Flight::route("POST /user", function(){
+ Flight::route("POST /pet", function(){
    
     $request = Flight::request()->data->getData();
  
-    Flight::json(['message' => "User added successfully!", 'data' =>Flight::users_dao()->add($request)]);
+    Flight::json(['message' => "Pet added successfully!", 'data' =>Flight::pet_service()->add($request)]);
  });
- Flight::route("PUT /user/@id", function($id){
+ Flight::route("PUT /pet/@id", function($id){
     
     $user = Flight::request()->data->getData();
 
-    Flight::json(['message' => "User edit successfully!", 'data' =>Flight::users_dao()->update($user, $id)]);
+    Flight::json(['message' => "Pet edit successfully!", 'data' =>Flight::pet_service()->update($user, $id)]);
  });
- Flight::route("DELETE /users/@id", function($id){
+ Flight::route("DELETE /pet/@id", function($id){
     
-    Flight::users_dao()->delete($id);
-    Flight::json(['message' => "User deleted successfully!"]);
+    Flight::pet_service()->delete($id);
+    Flight::json(['message' => "Pet deleted successfully!"]);
  });
  
  
- Flight::route("GET /users/@name", function($name){
+ Flight::route("GET /pets/@name", function($name){
     echo "hello from  /users route with name=" .$name;
  });
- Flight::route("GET /users/@name/@status", function($name, $status){
+ Flight::route("GET /pets/@name/@status", function($name, $status){
     echo "hello from  /users route with name = " . $name ." and status = " .$status  ;
  });
- Flight::start();
+
 ?>

@@ -3,11 +3,8 @@ require_once "BaseDao.class.php";
 class PetsDao extends BaseDao {
 
     public function __construct(){
-        parent::__construct("pets");
+        parent::__construct("pet");
       
-    }
-    public function get_all(){
-        return parent::get_all();
     }
 
     

@@ -7,18 +7,13 @@ class BaseDao{
     
 
     public function __construct($table_name){
-        
-            try {
-                $this->table_name = $table_name;
-                $servername = Config::DB_HOST();
-                $username = Config::DB_USERNAME();
-                $password = Config::DB_PASSWORD();
-                $schema = Config::DB_SCHEMA();
-                $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
-                $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch(PDOException $e) {
-                echo "Error: " . $e->getMessage();
-            }
+            $this->table_name = $table_name;
+            $servername = Config::DB_HOST();
+            $username = Config::DB_USERNAME();
+            $password = Config::DB_PASSWORD();
+            $schema = Config::DB_SCHEMA();
+            $this->conn = new PDO("mysql:host=$servername;dbname=$schema", $username, $password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         public function get_all(){
             $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name);
@@ -26,12 +21,12 @@ class BaseDao{
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         public function get_by_id($id){
-            $stmt = $this->conn->prepare("SELECT * FROM" . $this->table_name . "WHERE id=:id");
+            $stmt = $this->conn->prepare("SELECT * FROM " . $this->table_name . " WHERE id=:id");
             $stmt->execute(['id' => $id]);
             return $stmt->fetchALL();
         }
         public function delete($id){
-            $stmt = $this->conn->prepare("DELETE FROM" . $this->table_name . "WHERE id =:id");
+            $stmt = $this->conn->prepare("DELETE FROM " . $this->table_name . " WHERE id = :id");
             $stmt->bindParam(':id', $id);
             $stmt->execute();
 

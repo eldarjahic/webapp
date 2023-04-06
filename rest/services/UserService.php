@@ -8,10 +8,7 @@ class UserService extends BaseService{
         parent::__construct(new UserDao);
         
  }
- public function add($entity){
-    return parent::add($entity);
-    
-}
+
 }
 
 ?>

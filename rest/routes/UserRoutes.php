@@ -36,5 +36,4 @@
  Flight::route("GET /users/@name/@status", function($name, $status){
     echo "hello from  /users route with name = " . $name ." and status = " .$status  ;
  });
- Flight::start();
 ?>
