@@ -61,6 +61,11 @@ class BaseDao{
             $stmt->execute($entity);
             return $entity;
         }
+        public function execute_query($query, $params){
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+          }
     }
 
 ?>
