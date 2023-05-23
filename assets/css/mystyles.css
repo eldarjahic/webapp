@@ -85,13 +85,12 @@
     display: none;
 }
 
-.warning {
-    border-color: #ff9800;
-    color: orange;
-    outline-color: #ff9800;
+.sign-up {
+    border: 1px solid #ff9800 !important;
+    color: orange !important;
 }
 
-.warning:hover {
-    background: #ff9800;
+.sign-up:hover {
+    background-color: #ff9800;
     color: white;
 }
