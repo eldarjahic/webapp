@@ -59,6 +59,12 @@ var PetService = {
         $.ajax({
             url: 'rest/pet/',
             type: 'POST',
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(
+                    "Authorization",
+                    localStorage.getItem("user_token")
+                );
+            },
             data: JSON.stringify(pet),
             contentType: "application/json",
             dataType: "json",
@@ -77,9 +83,13 @@ var PetService = {
         console.log("edit");
         $.ajax({
             url: "rest/pet/" + pet.id,
-            /*beforeSend: function (xhr) {
-                   xhr.setRequestHeader("Authorization", localStorage.getItem("token"));
-                   },*/
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(
+                    "Authorization",
+                    localStorage.getItem("user_token")
+                );
+            },
+
             type: "PUT",
             data: JSON.stringify(pet),
             contentType: "application/json",
@@ -106,6 +116,12 @@ var PetService = {
     deletePet: function() {
         $.ajax({
             url: 'rest/pets/' + ("#pet_id").val(id),
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(
+                    "Authorization",
+                    localStorage.getItem("user_token")
+                );
+            },
             type: 'DELETE',
             success: function(response) {
                 console.log(response);

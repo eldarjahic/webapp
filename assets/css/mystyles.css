@@ -94,3 +94,14 @@
     background-color: #ff9800;
     color: white;
 }
+
+body {
+    background-image: url("https://img.freepik.com/free-vector/frame-with-dogs-vector-white-background_53876-127700.jpg?w=2000") !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.font-weight-light {
+    color: #ffcc00;
+}

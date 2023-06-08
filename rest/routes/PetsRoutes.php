@@ -1,4 +1,10 @@
 <?php
+/**
+ * @OA\Get(path="/pets", tags={"pets"}, security={{"ApiKeyAuth": {}}},
+ *         summary="Return all pets from the API. ",
+ *         @OA\Response( response=200, description="List of pets.")
+ * )
+ */
  Flight::route("GET /pets", function(){
    
     Flight::json(Flight::pet_service()->get_all());
