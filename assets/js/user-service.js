@@ -29,6 +29,19 @@ var UserService = {
 
     logout: function() {
         localStorage.clear();
-        window.location.replace("login.html");
+        window.location.reload();
     },
+
+    checkIsLoggedIn: function() {
+        var token = localStorage.getItem("user_token");
+        if (token) {
+            $('#sign-in-button').addClass("hide");
+            $('#sign-up-button').addClass("hide");
+            $('#sign-out-button').removeClass("hide");
+        } else {
+            $('#sign-in-button').removeClass("hide");
+            $('#sign-up-button').removeClass("hide");
+            $('#sign-out-button').addClass("hide");
+        }
+    }
 }

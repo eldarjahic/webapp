@@ -13,6 +13,7 @@
  Flight::register('userDao', "UserDao");
  Flight::register('user_service', "UserService");
  Flight::register('pet_service', "PetService");
+
  // middleware method for login
  Flight::route('/*', function(){
     //perform JWT decode
@@ -20,7 +21,7 @@
     if ($path == '/login' || $path == '/docs.json') return TRUE; // exclude login route from middleware
 
     $headers = getallheaders();
-    if (!$headers['Authorization']){
+    if (!@$headers['Authorization']){
       Flight::json(["message" => "Authorization is missing"], 403);
       return FALSE;
     }else{
@@ -37,7 +38,7 @@
 
     /* REST API documentation endpoint */
   Flight::route('GET /docs.json', function(){
-    $openapi = \OpenApi\scan('routes');
+    $openapi = \OpenApi\Generator::scan(['routes']);
     header('Content-Type: application/json');
     echo $openapi->toJson();
   });

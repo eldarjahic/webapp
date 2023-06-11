@@ -82,7 +82,7 @@
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .sign-up {
