@@ -11,7 +11,7 @@ use Firebase\JWT\Key;
    Flight::json(["message"=>$ex->getMessage()],$ex->getCode()?$ex->getCode():500);
  });*/
 Flight::register('userDao', "UserDao");
-Flight::register('user_service', "UserService");
+Flight::register('user_service', "UserService", array(new UserDao()));
 Flight::register('pet_service', "PetService");
 
 // middleware method for login

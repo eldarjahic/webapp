@@ -36,10 +36,9 @@
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#ourdogs">Our Dogs</a></li>
+                    <a href="#signup" type="button" id="sign-up-button" class="btn sign-up">Sign up</a>
                     <a href="#login" type="button" id="sign-in-button" class="btn btn-warning">Sign in</a>
-                    <a href="#login" type="button" id="sign-up-button" class="btn sign-up">Sign up</a>
                     <a type="button" id="sign-out-button" class="btn sign-up hide" onclick="UserService.logout()">Sign out</a>
                 </ul>
             </div>
@@ -52,20 +51,15 @@
         <section id="services" data-load="services.html">Services</section>
         <section id="adopt" data-load="adopt.html">Adopt</section>
         <section id="ourdogs" data-load="ourdogs.html">Our Dogs</section>
+        <section id="signup" data-load="signUp.html">Sign up</section>
         <section id="login" data-load="login.html">Sign in</section>
         <section id="home" data-load="home.html">Home</section>
+        
 
 
 
     </main>
-
-
-    <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container px-4 px-lg-5">
-            <p class="m-0 text-center text-white">Copyright &copy; PawFriends 2023</p>
-        </div>
-    </footer>
+    
     <!-- Bootstrap core JS-->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -84,6 +78,8 @@
     <script>
         UserService.checkIsLoggedIn();
     </script>
+   
+
 </body>
 
 

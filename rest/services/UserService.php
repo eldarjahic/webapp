@@ -7,9 +7,9 @@ use Firebase\JWT\Key;
 class UserService extends BaseService
 {
 
-  public function __construct()
+  public function __construct(UserDao $userDao)
   {
-    $this->dao = new UserDao();
+    $this->dao = $userDao;
   }
 
   public function login($data)
@@ -29,7 +29,6 @@ class UserService extends BaseService
       }
     } else {
       throw new Exception("User doesn't exist", 404);
-
     }
 
   }
