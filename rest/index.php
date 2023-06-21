@@ -2,6 +2,7 @@
 require "../vendor/autoload.php";
 require "services/UserService.php";
 require "services/PetService.php";
+require "services/AdoptionService.php";
 require_once "dao/UserDao.php";
 
 use Firebase\JWT\JWT;
@@ -13,6 +14,7 @@ use Firebase\JWT\Key;
 Flight::register('userDao', "UserDao");
 Flight::register('user_service', "UserService", array(new UserDao()));
 Flight::register('pet_service', "PetService");
+Flight::register('adoption_service', "AdoptionService");
 
 // middleware method for login
 Flight::route('/*', function () {
@@ -47,6 +49,7 @@ Flight::route('GET /docs.json', function () {
 
 require_once 'routes/UserRoutes.php';
 require_once 'routes/PetsRoutes.php';
+require_once 'routes/AdoptionRoutes.php';
 
 Flight::start();
 ?>

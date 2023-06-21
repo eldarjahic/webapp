@@ -66,3 +66,4 @@ class UserServiceTest extends TestCase
         $this->service->login(['email' => 'example@gmail.com', 'password' => 'password']);
     }
 }
+?>
